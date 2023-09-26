@@ -15,18 +15,18 @@ export const useCategory = defineStore("category", {
                     "accept-language": `all-ALL`,
                 },
             });
-            this.category = res.data
+            this.category = res.data.categories
             this.total = res.data.total_count
         },
-        async createCatigories(nameUz, nameRu) {
+        async createCatigories(nameUz, nameRu, type) {
             let body = {
-                "name": nameUz.value,
-                "name_uz": nameRu.value,
+                "name": nameRu,
+                "name_uz": nameUz,
                 "name_tr": "",
                 "name_en": ""
             }
             let res = await axios(`${import.meta.env.VITE_BASE}category`, {
-                method: 'POST',
+                method: type,
                 headers: {
                     accept: 'application/json',
                     'Content-Type': 'application/json',
@@ -35,6 +35,21 @@ export const useCategory = defineStore("category", {
                 data: body
             })
             this.getCategory()
+        },
+        async delCategory(id) {
+            try {
+                let res = await axios(`${import.meta.env.VITE_BASE}category/${id}`, {
+                    headers: {
+                        accept: "application/json",
+                        Authorization: `Bearer ${sessionStorage.getItem("access_token")}`
+                    },
+                    method: 'DELETE',
+                })
+                this.getCategory()
+            } catch (error) {
+                console.log(error);
+            }
+
         }
     },
     getters: {
