@@ -20,7 +20,7 @@
                     <p class="admin__counts-descr">Общее количество категории</p>
                 </div>
                 <div class="admin__counts-item">
-                    <h2 class="admin__counts-title">21</h2>
+                    <h2 class="admin__counts-title">{{useProducts().total}}</h2>
                     <p class="admin__counts-descr">Общее количество продуктов</p>
                 </div>
 
@@ -37,6 +37,7 @@
 <script setup>
 import { useAuth } from "@/stores/auth.js";
 import { useCategory } from "@/stores/category.js";
+import { useProducts } from "@/stores/products.js";
 import { onMounted, ref, computed } from 'vue'
 const links = ref([
     { url: '/catigories', name: 'Категории' },
@@ -48,6 +49,7 @@ const categoryStore = useCategory()
 onMounted(() => {
     authStore.checkAdmin();
     categoryStore.getCategory()
+    useProducts().getProducts()
 });
 </script>
 
