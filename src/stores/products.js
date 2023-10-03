@@ -20,8 +20,22 @@ export const useProducts = defineStore("products", {
            } catch (error) {
             console.log(error);
            }
+        },
+        async delProduct(id){
+            try {
+                let res = await axios({
+                    method:'DELETE',
+                    url:`${import.meta.env.VITE_BASE}products/${id}`,
+                    headers: {
+                        accept: "application/json",
+                        Authorization: `Bearer ${sessionStorage.getItem("access_token")}`
+                    },
+                })
+                this.getProducts()
+            } catch (error) {
+                console.log(error);
+            }
         }
-
     },
     getters: {
     },

@@ -1,9 +1,9 @@
+import "bootstrap/dist/js/bootstrap";
+import "bootstrap/dist/css/bootstrap.css";
 import './assets/styles/main.scss'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import "bootstrap/dist/js/bootstrap";
-import "bootstrap/dist/css/bootstrap.css";
 import App from './App.vue'
 import router from './router'
 import BtnAdd from "@/components/UI/BtnAdd.vue";

@@ -10,8 +10,8 @@
             <input class="admin-input" v-model="nameUz" type="text" placeholder="Название (UZ)" required>
         </label>
         <div class="admin-buttons">
-            <button class="admin-btn back" @click.prevent="emit('closeForm')">Назад</button>
-            <button class="admin-btn add"> Сохранить </button>
+            <button class="btn-ui back" @click.prevent="emit('closeForm')">Назад</button>
+            <button class="btn-ui add"> Сохранить </button>
         </div>
     </form>
 </template>
